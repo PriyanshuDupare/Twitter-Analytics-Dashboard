@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Power BI Report</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Make iframe responsive */
+        @media only screen and (max-width: 768px) {
+            iframe {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            var isAndroid = /Android/i.test(navigator.userAgent);
+            var isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+            if (isAndroid || isIOS) {
+                // Create a button to open the Power BI app manually
+                document.body.innerHTML = '<button id="openApp" style="padding: 10px 20px; font-size: 18px;">Open in Power BI Mobile App</button>';
+
+                document.getElementById('openApp').onclick = function() {
+                    // Use universal link for Power BI mobile app (adjust the link to your report)
+                    window.open("https://msit.powerbi.com/groups/me/reports/fef76fec-df99-4192-bce3-c92da2c8daa3", "_blank");
+
+                    // Fallback to browser version after 2 seconds if app doesn't open
+                    setTimeout(function() {
+                        window.location.href = "https://app.powerbi.com/view?r=eyJrIjoiY2VjOTA5MWUtYmI0Zi00NzdkLTllODItMGE1ZjM1ZWIxMTM5IiwidCI6Ijg0MWU5OTFmLTE3MzAtNDMzZi04MmJhLWVhNzg5NTAwNGZmYSJ9";
+                    }, 2000); // Adjust time as needed
+                };
+            }
+        };
+    </script>
+</head>
+<body>
+    <iframe title="Power Bi Twitter Analytics Dashboard Task" width="800" height="636" src="https://app.powerbi.com/view?r=eyJrIjoiY2VjOTA5MWUtYmI0Zi00NzdkLTllODItMGE1ZjM1ZWIxMTM5IiwidCI6Ijg0MWU5OTFmLTE3MzAtNDMzZi04MmJhLWVhNzg5NTAwNGZmYSJ9" allowFullScreen="true"></iframe>
+</body>
+</html>
